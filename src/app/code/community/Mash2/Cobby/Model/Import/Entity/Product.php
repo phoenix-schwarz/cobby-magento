@@ -355,6 +355,10 @@ class Mash2_Cobby_Model_Import_Entity_Product extends Mage_ImportExport_Model_Im
     /**
      * Validate data rows and save bunches to DB.
      *
+     * This function is overwritten, because we know how many products we import.
+     * To exceed the max bunchSize in some cases, the save method is stripped to its
+     * minimum function.
+     *
      * @return Mage_ImportExport_Model_Import_Entity_Abstract
      */
     protected function _saveValidatedBunches()
@@ -382,9 +386,8 @@ class Mash2_Cobby_Model_Import_Entity_Product extends Mage_ImportExport_Model_Im
             }
             $source->next();
         }
-        if (!$source->valid()) {
-            $this->_dataSourceModel->saveBunch($this->getEntityTypeCode(), $this->getBehavior(), $rows);
-        }
+
+        $this->_dataSourceModel->saveBunch($this->getEntityTypeCode(), $this->getBehavior(), $rows);
 
         return $this;
     }
