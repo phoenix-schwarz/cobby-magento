@@ -355,9 +355,8 @@ class Mash2_Cobby_Model_Import_Entity_Product extends Mage_ImportExport_Model_Im
     /**
      * Validate data rows and save bunches to DB.
      *
-     * This function is overwritten, because we know how many products we import.
-     * To exceed the max bunchSize in some cases, the save method is stripped to its
-     * minimum function.
+     * This function is overwritten, because cobby knows how many products are imported at once.
+     * To exceed the max bunchSize in some cases, the save method is reduced to its minimum function.
      *
      * @return Mage_ImportExport_Model_Import_Entity_Abstract
      */
